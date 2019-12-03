@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Lista de Personas</title>
+</head>
+<body>
+	<h1>PERSONAS</h1>
+	<table border='1'>
+			<thead>
+				<th>n°</th>
+				<th>Nombre</th>
+				<th>Apellido</th>
+			</thead>
+			<tbody>
+				{% for p in Persona %}
+					<tr>
+						<td>{{p.id}}</td>
+						<td>{{p.nombre}}</td>
+						<td>{{p.apellido}}</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+	</table>
+</body>
+</html>
