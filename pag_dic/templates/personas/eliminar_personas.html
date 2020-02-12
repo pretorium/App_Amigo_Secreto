@@ -1,0 +1,13 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<form method="POST">
+	{% csrf_token %}
+	
+	<h3>¿Desea eliminar a {{ object.nombre }} {{ object.apellido }} de la lista?</h3> 
+
+	<button class="btn btn-danger" >Si, eliminar</button>
+	<a class="btn btn-default" href="{% url 'personas_app:lista_personas' %}">Cancelar</a>
+</form>
+
+{% endblock %}

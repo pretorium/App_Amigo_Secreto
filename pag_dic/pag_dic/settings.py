@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+from django.urls import reverse_lazy
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -80,7 +81,7 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         'NAME': 'pag_dic',
         'USER': 'postgres',
-        'PASSWORD': '24174737xd',
+        'PASSWORD': 'admin',
         'HOST': '127.0.0.1',
         'DATABASE_PORT': '5432',
     }
@@ -124,3 +125,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+LOGIN_REDIRECT_URL = reverse_lazy('personas_app:lista_personas')
+LOGOUT_REDIRECT_URL = reverse_lazy('personas_app:lista_personas')
+
+EMAIL_USE_TLS= True
+EMAIL_HOST= 'smtp.gmail.com'
+EMAIL_PORT= 25
+EMAIL_HOST_USER= 'amigo.secreto.dic2019@gmail.com'
+EMAIL_HOST_PASSWORD= 'admin110396'
+EMAIL_BACKEND= 'django.core.mail.backends.smtp.EmailBackend'

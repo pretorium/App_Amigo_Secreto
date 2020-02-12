@@ -1,0 +1,14 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sorteo</title>
+</head>
+<body>
+	<h1>Sorteo Realizado!, informacion envia al correo de los participantes.</h1>
+	<a class="btn btn-default" href="{% url 'personas_app:lista_personas' %}">Volver</a>
+</body>
+</html>
+{% endblock %}

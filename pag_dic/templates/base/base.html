@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+
+	{% block extrastatic %}
+	{% endblock %}
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+	<title>{% block title %} Intercambio Navidad {% endblock %}</title>
+
+</head>
+<body>
+
+<div class="container">
+
+	{% block navbar %}
+		<div>
+			<nav class="navbar navbar-inverse">
+			 	<ul class="nav navbar-nav">
+			 		<li><a href="{% url 'personas_app:lista_personas' %}">Home</a></li>
+			 		
+			 		{% if user.is_active %}
+			 		<li><a href="{% url 'personas_app:registrar_persona' %}" >Inscribir
+			 		</a></li>
+			 		{% endif %}
+			 		
+			 		{% if user.is_active %}
+			 		<li><a class="btn btn-danger" href="{% url 'personas_app:sorteo' %}">Sortear</a></li>
+					{% endif %}
+					 
+					{% if not user.is_active %}
+					<li><a href="{% url 'usuarios_app:registrar' %}" >Registrarse</a></li>
+					{% endif %}
+					 
+					{% if not user.is_active %}
+					 <li><a href="{% url 'login' %}" >Login</a></li>
+					{% endif %}
+			 		
+			 		{% if user.is_active %}
+			 		<li><a href="{% url 'logout' %}" >Salir</a></li>
+			 		{% endif %}
+			 		
+			 	</ul>
+			</nav>
+		</div>
+	{% endblock %}
+
+
+	{% block content %}
+	{% endblock %}
+
+
+	{% block footer %}
+	{% endblock%}
+
+</div>
+
+	{% block extrajs %}
+	{% endblock %}
+
+</body>
+</html>

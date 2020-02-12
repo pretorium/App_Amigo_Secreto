@@ -1,25 +1,45 @@
+{% extends 'base/base.html' %}
+{% block content %}
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Lista de Personas</title>
 </head>
 <body>
-	<h1>PERSONAS</h1>
-	<table border='1'>
-			<thead>
-				<th>Id</th>
-				<th>Nombre</th>
-				<th>Apellido</th>
+	<h1>Lista Personas</h1>
+	<table class="table">
+
+			<thead >
+				<tr>
+					<td>Id</td>
+					<td>Nombre</td>
+					<td>Apellido</td>
+					<td>Correo</td>
+					<td>Acción</td>
+				</tr>
 			</thead>
+
 			<tbody>
-				{% for p in personas %}
-					<tr>
-						<td>{{p.id}}</td>
-						<td>{{p.nombre}}</td>
-						<td>{{p.apellido}}</td>
-					</tr>
+				{% if object_list %}
+				{% for personas in object_list %}
+				<tr>
+					<td>{{ personas.id }}</td>
+					<td>{{ personas.nombre }}</td>
+					<td>{{ personas.apellido }}</td>
+					<td>{{ personas.email }}</td>
+					<td >
+						<a class="btn btn-success" href="{% url 'personas_app:editar_persona' personas.id %}">Editar</a>
+						<a class="btn btn-danger" href="{% url 'personas_app:eliminar_persona' personas.id %}">Eliminar</a>
+						
+					</td>
+				</tr>
 				{% endfor %}
+
+				{% else %}
+				<h1>No hay registro</h1>
+				{% endif %}
 			</tbody>
 	</table>
 </body>
 </html>
+{% endblock %}
